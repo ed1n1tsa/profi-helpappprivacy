@@ -4,16 +4,309 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Поддержка — Profi Help</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1e2430;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.06), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      padding: 32px 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      border-radius: 28px;
+      padding: 40px 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 700px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .info-label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .info-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .info-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .info-value a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--accent);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fcfdff;
+    }
+
+    .faq-item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 24px;
+      padding-bottom: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 30px 20px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .info-value {
+        font-size: 17px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Служба поддержки Profi Help</h1>
-  <p>Если у вас есть вопросы по работе приложения, заказам, аккаунту или обработке данных, свяжитесь с нами:</p>
+  <div class="container">
+    <section class="hero">
+      <h1>Служба поддержки Profi Help</h1>
+      <p>
+        Если у вас есть вопросы по работе приложения, заявкам, аккаунту или обработке данных,
+        свяжитесь с нами любым удобным способом.
+      </p>
+    </section>
 
-  <p><strong>Компания:</strong> TOO "Profihelp"</p>
-  <p><strong>Адрес:</strong> г. Алматы, улица Сейфулина, 58</p>
-  <p><strong>Email:</strong> profi.help@gmail.com</p>
-  <p><strong>Телефон:</strong> +7 7072563153</p>
+    <section class="card">
+      <h2 class="section-title">Контактная информация</h2>
 
-  <p>Мы постараемся ответить на ваш запрос в кратчайшие сроки.</p>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Компания</span>
+          <div class="info-value">TOO "Profihelp"</div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Телефон</span>
+          <div class="info-value">
+            <a href="tel:+77072563153">+7 707 256 31 53</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <div class="info-value">
+            <a href="mailto:profi.help@gmail.com">profi.help@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Адрес</span>
+          <div class="info-value">г. Алматы, улица Сейфулина, 58</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:profi.help@gmail.com">Написать на Email</a>
+        <a class="btn btn-secondary" href="tel:+77072563153">Позвонить</a>
+      </div>
+
+      <p class="note">
+        Мы стараемся отвечать на обращения пользователей в кратчайшие сроки.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Частые вопросы</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>По каким вопросам можно обратиться?</h3>
+          <p>
+            Вы можете обратиться по вопросам работы приложения, регистрации, заявок,
+            связи со специалистами, технических ошибок и обработки персональных данных.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Как быстро приходит ответ?</h3>
+          <p>
+            Мы стараемся обрабатывать обращения как можно быстрее. Время ответа может зависеть
+            от сложности вопроса и загруженности службы поддержки.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Куда писать по вопросам конфиденциальности?</h3>
+          <p>
+            По вопросам, связанным с персональными данными и конфиденциальностью, используйте тот же
+            адрес электронной почты: profi.help@gmail.com.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 Profi Help. Все права защищены.
+    </div>
+  </div>
 </body>
 </html>
