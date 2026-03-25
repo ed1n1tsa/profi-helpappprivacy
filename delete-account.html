@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Удаление аккаунта — Profi Help</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1e2430;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --danger: #dc2626;
+      --danger-soft: #fef2f2;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.06), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 32px 16px;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      border-radius: 28px;
+      padding: 40px 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 760px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .section-text {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .highlight-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+    }
+
+    .warning-box {
+      background: var(--danger-soft);
+      border: 1px solid #fecaca;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+    }
+
+    .highlight-box strong,
+    .warning-box strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fcfdff;
+    }
+
+    .step-number {
+      min-width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .info-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .info-label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .info-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .info-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .info-value a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #b91c1c;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--accent);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 24px;
+      padding-bottom: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 30px 20px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .info-value {
+        font-size: 17px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .step {
+        flex-direction: row;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1>Удаление аккаунта Profi Help</h1>
+      <p>
+        На этой странице вы можете узнать, как запросить удаление аккаунта Profi Help
+        и связанных с ним персональных данных.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Как запросить удаление аккаунта</h2>
+      <p class="section-text">
+        Вы можете удалить свой аккаунт в приложении Profi Help через встроенную функцию
+        удаления аккаунта или отправить запрос через службу поддержки.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Откройте приложение Profi Help</h3>
+            <p>
+              Войдите в свою учетную запись и перейдите в раздел профиля или настроек,
+              где доступна функция удаления аккаунта.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Выберите удаление аккаунта</h3>
+            <p>
+              Подтвердите удаление аккаунта через интерфейс приложения, следуя инструкциям на экране.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Или отправьте запрос по email</h3>
+            <p>
+              Если у вас нет доступа к приложению, отправьте запрос на удаление аккаунта
+              на адрес поддержки, указав email или номер телефона, привязанный к аккаунту.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Куда отправить запрос</strong>
+        Email для запросов на удаление аккаунта: <a href="mailto:profi.help@gmail.com">profi.help@gmail.com</a>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:profi.help@gmail.com?subject=Account%20Deletion%20Request%20-%20Profi%20Help">
+          Отправить запрос на удаление
+        </a>
+        <a class="btn btn-secondary" href="support.html">
+          Перейти в поддержку
+        </a>
+      </div>
+
+      <p class="note">
+        Для ускорения обработки запроса укажите email, номер телефона или иные данные,
+        связанные с вашим аккаунтом.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Какие данные удаляются</h2>
+      <p class="section-text">
+        После обработки запроса мы удаляем аккаунт пользователя и связанные с ним персональные данные,
+        если иное не требуется действующим законодательством.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Удаляются</span>
+          <div class="info-value">Профиль, контактные данные, фото профиля, связанные данные аккаунта</div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Могут храниться дольше</span>
+          <div class="info-value">Данные, которые необходимо сохранить по закону, для разрешения споров или предотвращения мошенничества</div>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong>Важно</strong>
+        После удаления аккаунта восстановление доступа может быть невозможно.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Срок обработки запроса</h2>
+      <p class="section-text">
+        Мы рассматриваем запросы на удаление аккаунта в разумный срок.
+        В зависимости от характера запроса и требований законодательства обработка может занять до 30 дней.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Срок ответа</span>
+          <div class="info-value">В разумный срок</div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Максимальный срок обработки</span>
+          <div class="info-value">До 30 дней</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Контактная информация</h2>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Компания</span>
+          <div class="info-value">TOO "Profihelp"</div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Телефон</span>
+          <div class="info-value">
+            <a href="tel:+77072563153">+7 707 256 31 53</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <div class="info-value">
+            <a href="mailto:profi.help@gmail.com">profi.help@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Адрес</span>
+          <div class="info-value">г. Алматы, улица Сейфулина, 58</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 Profi Help. Все права защищены.
+    </div>
+  </div>
+</body>
+</html>
